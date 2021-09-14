@@ -12,4 +12,3 @@ function printRow(row){
 function printNum(num){
     console.log(num);
 }
-
