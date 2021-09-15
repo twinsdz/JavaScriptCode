@@ -1,5 +1,5 @@
 function solve(input, n) {
-
+n = n % input.length;
     for (let i = 0; i < n; i++) {
         let el = input.pop();
         input.unshift(el);
