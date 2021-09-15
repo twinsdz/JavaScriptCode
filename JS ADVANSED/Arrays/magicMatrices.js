@@ -1,21 +1,18 @@
 function solve(input) {
-    let sumFirstRow = input[0].reduce((acc, curr) => acc + curr, 0);
-    let sumFirstCol = 0;
+    let magicSum = input[0].reduce((acc, curr) => acc + curr, 0);
     let isMagic = true;
 
-    input.forEach(row => {
-        sumFirstCol += row[0];
-    });
-
-    for (let row = 1; row < input.length; row++) {
-        let currentRowSum = input[row].reduce((acc, curr) => acc + curr, 0);
+    for (let row = 0; row < input.length; row++) {
+        // let currentRowSum = input[row].reduce((acc, curr) => acc + curr, 0);
+        let currentRowSum = 0;
         let currentColSum = 0;
 
         for (let col = 0; col < input.length; col++) {
+            currentRowSum += input[row][col];
             currentColSum += input[col][row];
         }
 
-        if (currentRowSum !== sumFirstRow || currentColSum !== sumFirstCol) {
+        if (currentRowSum !== magicSum || currentColSum !== magicSum) {
             isMagic = false;
         }
     }
