@@ -1,19 +1,19 @@
 function equalNeighbors(input) {
     let count = 0;
     // сравняване на масиви в матрица
-    for (let i = 0; i < input.length - 1; i++) {
-        // въртя до края на съответния масив в масива i е реда j е колоната (j e index 1 от реда)
-        for (j = 1; j < input[i].length; j++) {
+    for (let row = 0; row < input.length - 1; row++) {
+        // въртя до края на съответния масив в масива 
+        for (let col = 1; col < input[row].length; col++) {
             // сравнявам следващия масив в същата колона (едно под друго числата от 1ви индекс натам)
-            let oneArr = input[i][j];
-            let twoArr = input[i + 1][j];
-            if (input[i][j] === input[i + 1][j]) {
+            // let oneArr = input[row][col];
+            // let twoArr = input[row + 1][col];
+            if (input[row][col] === input[row + 1][col]) {
                 count++;
             }
             // сравнявам в същия масив съседното число отляво, защото вървя надясно и на последния индекс няма какво да сравня 
-            let a = input[i][j];
-            let b = input[i][j - 1];
-            if (input[i][j] === input[i][j - 1]) {
+            let a = input[row][col];
+            let b = input[row][col - 1];
+            if (input[row][col] === input[row][col - 1]) {
                 count++;
             }
         }
