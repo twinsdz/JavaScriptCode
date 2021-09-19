@@ -37,7 +37,7 @@ function changed(param){                     // param получава копи�
 main(); */
 
 function main(){
-    let myVar = {name: 'Peter', age: 20};   // това важи и за масив, и са обект, и за функция
+    let myVar = {name: 'Peter', age: 20};   // това важи и за масив, и за обект, и за функция
     console.log(`Starting Value: ${Object.entries(myVar)}`);
 
     changed(myVar);
