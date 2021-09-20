@@ -20,7 +20,8 @@ const department = {
     foundYear: 1968,
     sayHi() {
         console.log('Hi Desi!');
-    }
+    },
+    greet: name => console.log('Hello ' + name + '!')
 };
 
 const {
@@ -56,3 +57,13 @@ for (let empl of employees) {
     // извикване на метод (функциите в обекта се наричат метод). Достъпват се като другите елементи само че се извикват със скоби.
     department.sayHi();
 }
+
+employees.forEach(empl => {
+    let {
+        name,
+        position
+    } = empl;
+    console.log(`${name} --> ${position}`);
+});
+
+department.greet('Desita');
