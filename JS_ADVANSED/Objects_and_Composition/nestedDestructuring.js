@@ -21,26 +21,22 @@ const department = {
     sayHi() {
         console.log('Hi Desi!');
     },
-    greet: name => console.log('Hello ' + name + '!')
+    greetFunc() {
+        console.log(`Hello ${employees[0].name}`);
+    }
 };
 
-const {
-    data: {
-        director
-    },
-    data: {
-        employees
-    },
-    data: {
-        company
-    }
-} = department;
-const {
-    name,
-    data,
-    foundYear
-} = department;
+// destructoring
+// companyType е просто променлива, която отговаря на name. В обекта name си остава name.
+let {name: companyType, ...rest} = department;
+console.log(companyType);
+console.log(rest);
 
+const {data: {director, employees, company}} = department;
+const {name, data, foundYear} = department;
+const [firstEmpl, secondEmpl] = employees;
+
+console.log(firstEmpl);
 console.log(name);
 console.log(data);
 console.log(foundYear);
@@ -66,4 +62,6 @@ employees.forEach(empl => {
     console.log(`${name} --> ${position}`);
 });
 
-department.greet('Desita');
+department.greetFunc();
+
+

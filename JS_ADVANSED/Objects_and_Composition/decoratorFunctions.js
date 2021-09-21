@@ -4,7 +4,7 @@ function canPrint(device) {
     };
   }
 
-  const printer = { name: 'ACME Printer' };
+  const printer = {name: 'ACME Printer'};
   const copier = {name: 'Desis Copier'};
 
   canPrint(copier);
@@ -12,4 +12,3 @@ function canPrint(device) {
   
   copier.print();
   printer.print();
-  
