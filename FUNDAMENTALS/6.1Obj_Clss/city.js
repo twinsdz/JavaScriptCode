@@ -1,3 +1,25 @@
+function cityInfo(city){
+    let entries = Object.entries(city);
+    for(let [key, value] of entries){
+        console.log(`${key} -> ${value}`);
+    }
+}
+
+
+let info = {
+    name: "Sofia",
+    area: 492,
+    population: 1238438,
+    country: "Bulgaria",
+    postCode: "1000"
+};
+
+// info[1] = 1 + 3;
+// info[2] = 2;
+// info[3] = 3;
+
+cityInfo(info);
+
 /* function cityInfo(city) {
     let keys = Object.keys(city);
 
@@ -20,25 +42,3 @@
         console.log(`${key} -> ${value}`);
     }
 } */
-
-function cityInfo(city){
-    let entries = Object.entries(city);
-    for(let [key, value] of entries){
-        console.log(`${key} -> ${value}`);
-    }
-}
-
-
-let info = {
-    name: "Sofia",
-    area: 492,
-    population: 1238438,
-    country: "Bulgaria",
-    postCode: "1000"
-};
-
-// info[1] = 1 + 3;
-// info[2] = 2;
-// info[3] = 3;
-
-cityInfo(info);

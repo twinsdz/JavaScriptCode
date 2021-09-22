@@ -42,8 +42,8 @@ function solve(obj) {
 
     function getWheels(num) {
         let wheelsize = Math.floor(num) % 2 === 0 ? Math.floor(num) -1 : Math.floor(num);
-        return Array(4).fill(wheelsize, 0, 4);
-        // return [wheelsize, wheelsize, wheelsize, wheelsize];
+        // return Array(4).fill(wheelsize, 0, 4);
+        return [wheelsize, wheelsize, wheelsize, wheelsize];
     }
 }
 

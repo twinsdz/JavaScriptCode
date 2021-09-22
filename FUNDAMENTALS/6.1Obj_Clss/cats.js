@@ -1,3 +1,32 @@
+function solve(catsAsString) {
+    class Cat {
+        constructor(name, age) {
+            this.name = name,
+            this.age = age
+        }
+        meow() {
+            console.log(`${this.name}, age ${this.age} says Meow`);
+        }
+    }
+
+    let cats = [];
+    // взимам от input-а 
+    for (let catData of catsAsString) {
+        let [name, age] = catData.split(' ');
+        
+        // попълвам, чрез класа името и годините и ги пълня в масива cats
+        let cat = new Cat(name, age);
+        cats.push(cat);
+    }
+
+    // обхождам масива cats взимам котката и викам метода от класа за нея. Метода печата.
+    for (let cat of cats) {
+        cat.meow();
+    }
+}
+
+solve(['Mellow 2', 'Tom 5']);
+
 /* function solve(catsAsStr) {
     class Cat {
         constructor(name, age) {
@@ -47,32 +76,3 @@ solve(['Mellow 2', 'Tom 5']); */
         cat.meow();
     }
 } */
-
-function solve(catsAsString) {
-    class Cat {
-        constructor(name, age) {
-            this.name = name,
-            this.age = age
-        }
-        meow() {
-            console.log(`${this.name}, age ${this.age} says Meow`);
-        }
-    }
-
-    let cats = [];
-    // взимам от input-а 
-    for (let catData of catsAsString) {
-        let [name, age] = catData.split(' ');
-        
-        // шпопълвам, чрез класа името и годините и ги пълня в масива cats
-        let cat = new Cat(name, age);
-        cats.push(cat);
-    }
-
-    // обхождам масива cats взимам котката и викам метода от класа за нея. Метода печата.
-    for (let cat of cats) {
-        cat.meow();
-    }
-}
-
-solve(['Mellow 2', 'Tom 5']);

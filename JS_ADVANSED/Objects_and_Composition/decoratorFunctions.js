@@ -12,3 +12,4 @@ function canPrint(device) {
   
   copier.print();
   printer.print();
+  

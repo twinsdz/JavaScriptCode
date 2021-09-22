@@ -109,6 +109,7 @@ solve([
         }
     });
 
+    // обект с команди
     let commandParsed = {
         'Drive': drive,
         'Refuel': refuel,
