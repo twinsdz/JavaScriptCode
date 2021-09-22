@@ -1,4 +1,41 @@
+// печатане на продукти по азбучен ред и по групи
 function solve(input) {
+    let catalogue = {};
+
+    for (let line of input) {
+        let [product, price] = line.split(' : ');
+        let firstChar = product[0];
+
+        // вложен обект
+        if (!catalogue[firstChar]) {
+            catalogue[firstChar] = {};
+        }
+        catalogue[firstChar][product] = Number(price);
+    }
+
+    let initialSort = Object.keys(catalogue).sort((a, b) => a[0].localeCompare(b[0]));
+
+    for (let key of initialSort) {
+        let products = Object.entries(catalogue[key]).sort((a, b) => a[0].localeCompare(b[0]));
+        console.log(key);
+        products.forEach(el => {
+            console.log(`  ${el[0]}: ${el[1]}`);
+        });
+    }
+}
+
+solve(['Appricot : 20.4',
+    'Fridge : 1500',
+    'TV : 1499',
+    'Deodorant : 10',
+    'Boiler : 300',
+    'Apple : 1.25',
+    'Anti-Bug Spray : 15',
+    'T-Shirt : 10'
+]);
+
+
+/* function solve(input) {
     let catalogue = {};
 
     for (let line of input) {
@@ -46,3 +83,4 @@ console.log(solve(['Appricot : 20.4',
     'Anti-Bug Spray : 15',
     'T-Shirt : 10'
 ]));
+ */
