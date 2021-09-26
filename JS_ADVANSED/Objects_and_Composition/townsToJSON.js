@@ -6,7 +6,7 @@ function solve(array) {
 
     for (let row of array) {
         let obj = {}; // при всяко завъртане правя нов обект
-        let lineArr = row.match(/([^|]+)/g); // regex който реже всичко межди даден патерн
+        let lineArr = row.match(/([^|]+)/g); // regex който реже всичко между дадени символи
         let [townName, latitNum, longitNum] = lineArr;
 
         townName = townName.trim();
