@@ -12,6 +12,12 @@
 <textarea id="result"></textarea>
 <br>
 <button onclick="extractText()">Extract Text</button>
+<button onclick="reset()">Reset</button>
 <script src="CollectListItems.js"></script>
+<script>
+    function reset(){
+        document.getElementById("result").value = '';
+    }
+</script>
 </body>
 </html>
