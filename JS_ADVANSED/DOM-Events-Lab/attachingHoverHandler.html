@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Write something in the input field</label>
+        <input type="text">
+        <button disabled='disabled'>Show it</button>
+    </div>
+
+    <script>
+        const button = document.getElementsByTagName('div')[0];
+        button.addEventListener('mouseover', function (e) {
+            const style = e.currentTarget;
+            const {
+                backgroundColor
+            } = style;
+
+            if (backgroundColor === 'white') {
+                targetStyles.backgroundColor = '#234465';
+                targetStyles.color = 'white';
+            } else {
+                targetStyles.backgroundColor = 'white';
+                targetStyles.color = '#234465';
+            }
+        });
+
+        // const inputField = document.getElementsByTagName('input')[0];
+        // const button = document.getElementsByTagName('button')[0];
+        // inputField.addEventListener('input', function () {
+        //     button.setAttribute('disabled', 'false')
+        // });
+    </script>
+
+</body>
+
+</html>
