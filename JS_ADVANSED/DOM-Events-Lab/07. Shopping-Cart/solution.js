@@ -28,6 +28,7 @@ function solve() {
 
 
 /* function solve() {
+  // let active = true;
   document.getElementsByClassName('shopping-cart')[0].addEventListener('click', onClick);
   document.getElementsByClassName('checkout')[0].addEventListener('click', checkout);
   const cart = [];
@@ -36,6 +37,7 @@ function solve() {
 
 
   function onClick(ev) {
+    // if (active && ev.target.tagName == 'BUTTON' && ev.target.classList.contains('add-product'))
     if (ev.target.tagName == 'BUTTON' && ev.target.classList.contains('add-product')) {
       const product = ev.target.parentNode.parentNode;
       const name = product.querySelector('.product-title').textContent;
@@ -55,5 +57,11 @@ function solve() {
 
     const total = cart.reduce((t, curr) => t + curr.price, 0);
     output.value += `You bought ${Array.from(products.keys()).join(' ')} for ${total.toFixed(2)}.`;
+
+    if(output.value.includes('You bought')){
+      document.getElementsByClassName('checkout')[0].disabled = true;
+      Array.from(document.getElementsByClassName('add-product')).forEach(el => el.disabled = true);
+      // active = false;
+    }
   }
 } */
