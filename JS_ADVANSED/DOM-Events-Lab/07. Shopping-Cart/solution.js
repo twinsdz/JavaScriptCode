@@ -26,42 +26,44 @@ function solve() {
   let data = {};
 }
 
-
 /* function solve() {
-  // let active = true;
-  document.getElementsByClassName('shopping-cart')[0].addEventListener('click', onClick);
-  document.getElementsByClassName('checkout')[0].addEventListener('click', checkout);
+  const output = document.querySelector('textarea');
   const cart = [];
-  const output = document.getElementsByTagName('textarea')[0];
-  output.value = '';
+
+  document.querySelector('.shopping-cart').addEventListener('click', onClick);
+
+  document.querySelector('.checkout').addEventListener('click', onCheckOut);
 
 
-  function onClick(ev) {
-    // if (active && ev.target.tagName == 'BUTTON' && ev.target.classList.contains('add-product'))
-    if (ev.target.tagName == 'BUTTON' && ev.target.classList.contains('add-product')) {
-      const product = ev.target.parentNode.parentNode;
-      const name = product.querySelector('.product-title').textContent;
-      const price = Number(product.querySelector('.product-line-price').textContent);
+  function onClick(event) {
+     if (event.target.tagName == 'BUTTON' && event.target.className == 'add-product') {
 
-      cart.push({
-        name,
-        price
-      });
-      output.value += `Added ${name} for ${price.toFixed(2)} to the cart.\n`;
-    }
+        const product = event.target.parentNode.parentNode;
+        let price = Number(product.querySelector('.product-line-price').textContent);
+        let title = product.querySelector('.product-title').textContent;
+
+        cart.push({
+           title,
+           price
+        });
+        output.value += `Added ${title} for ${price.toFixed(2)} to the cart.\n`;
+     }
   }
 
-  function checkout() {
-    const products = new Set();
-    cart.forEach(product => products.add(product.name));
-
-    const total = cart.reduce((t, curr) => t + curr.price, 0);
-    output.value += `You bought ${Array.from(products.keys()).join(' ')} for ${total.toFixed(2)}.`;
-
-    if(output.value.includes('You bought')){
-      document.getElementsByClassName('checkout')[0].disabled = true;
-      Array.from(document.getElementsByClassName('add-product')).forEach(el => el.disabled = true);
-      // active = false;
-    }
+  function onCheckOut() {
+     const result = cart.reduce((acc, item) => {
+        acc.items.push(item.title);
+        acc.total += item.price;
+        return acc;
+     }, { items: [], total: 0 });
+     
+     output.value += `You bought ${result.items.join(', ')} for ${result.total.toFixed(2)}.`
+     disableButtons();
   }
+
+  function disableButtons() {
+     let buttons = Array.from(document.querySelectorAll('button'));
+     buttons.forEach(button => button.disabled = true);
+  }
+
 } */
