@@ -88,3 +88,109 @@ function solve() {
         return result;
     }
 }
+
+/* window.addEventListener('load', solve);
+ 
+function solve() {
+    const whereWeWriteNewSong = document.querySelector(".container-text form");
+    const buttonAdd = whereWeWriteNewSong.querySelector("button");
+    buttonAdd.addEventListener("click", addSong);
+    function addSong(ev) {
+        ev.preventDefault();
+        const inputFields = [];
+        const elements = Array.from(ev.target.parentElement.querySelectorAll("input"));
+        for (const el of elements) {
+            inputFields.push(el.value);
+        }
+ 
+        let allFieldsFilledIn = true;
+        for (const el of inputFields) {
+            if (el == "") {
+                allFieldsFilledIn = false;
+                break;
+            }
+        }
+ 
+        if (allFieldsFilledIn) {
+            addingSong(inputFields);
+            for (const el of elements) {
+                el.value = "";
+            }
+ 
+        }
+ 
+    }
+ 
+     function addingSong(inputArr) {
+        const whereWeAddTheSongs = document.querySelector(".all-hits-container");
+ 
+        const divClassHitsInfo = document.createElement("div");
+        divClassHitsInfo.setAttribute("class", "hits-info");
+        whereWeAddTheSongs.appendChild(divClassHitsInfo);
+ 
+        const imgElement = document.createElement("img");
+        imgElement.src = "./static/img/img.png";
+        divClassHitsInfo.appendChild(imgElement);
+ 
+        const elH2Genre = document.createElement("h2");
+        elH2Genre.textContent = "Genre: " + inputArr[0];
+        divClassHitsInfo.appendChild(elH2Genre);
+ 
+        const elH2Name = document.createElement("h2");
+        elH2Name.textContent = "Name: " + inputArr[1];
+        divClassHitsInfo.appendChild(elH2Name);
+ 
+        const elH2Author = document.createElement("h2");
+        elH2Author.textContent = "Author: " + inputArr[2];
+        divClassHitsInfo.appendChild(elH2Author);
+ 
+        const elH3Date = document.createElement("h3");
+        elH3Date.textContent = "Date: " + inputArr[3];
+        divClassHitsInfo.appendChild(elH3Date);
+ 
+        const buttonLike = document.createElement("button");
+        buttonLike.setAttribute("class", "like-btn");
+        buttonLike.textContent = "Like song";
+        divClassHitsInfo.appendChild(buttonLike);
+        buttonLike.addEventListener("click", likeFunct);
+ 
+        const buttonSave = document.createElement("button");
+        buttonSave.setAttribute("class", "save-btn");
+        buttonSave.textContent = "Save song";
+        divClassHitsInfo.appendChild(buttonSave);
+        buttonSave.addEventListener("click", saveFunct);
+        
+ 
+        const buttonDelete = document.createElement("button");
+        buttonDelete.setAttribute("class", "delete-btn");
+        buttonDelete.textContent = "Delete";
+        divClassHitsInfo.appendChild(buttonDelete);
+        buttonDelete.addEventListener("click", deleteFunct);
+ 
+    }
+ 
+    function likeFunct(ev) {
+        ev.target.setAttribute('disabled', 'true');
+        const textTotalLikes = document.querySelector("div[class='likes']  p");
+        let [mainText, numberLikes] = textTotalLikes.textContent.split(": ");
+        numberLikes = Number(numberLikes);
+        numberLikes++;
+        textTotalLikes.textContent = mainText + ": "+ numberLikes;
+    }
+ 
+    function saveFunct(ev) {
+        const elToMove = ev.target.parentElement;
+        elToMove.remove();
+        const childr = elToMove.children;
+        childr[5].remove();
+        childr[5].remove();
+ 
+        const whereWeAddSavedSongs = document.querySelector(".saved-container");
+        whereWeAddSavedSongs.appendChild(elToMove);
+    }
+ 
+    function deleteFunct(ev) {
+        const elToRemove = ev.target.parentElement;
+        elToRemove.remove();
+    }
+} */
