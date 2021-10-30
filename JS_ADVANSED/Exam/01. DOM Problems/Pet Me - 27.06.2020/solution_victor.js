@@ -1,22 +1,34 @@
 function solve() {
-    const fields = Array.from(document.querySelectorAll('#container input'));
+    const fields = document.querySelectorAll('#container input');
     const addBtn = document.querySelector('#container button');
     const petList = document.querySelector('#adoption ul');
     const adoptedList = document.querySelector('#adopted ul');
+    
+
+    // Това е списъка fields когато не е масив
+    const input = {
+        name: fields[0],
+        age: fields[1],
+        kind: fields[2],
+        owner: fields[3]
+    };
 
     addBtn.addEventListener('click', addPet);
 
     function addPet(ev) {
         ev.preventDefault();
 
-        // Деструктурирам всички полета от масива fields
-        const [name, age, kind, owner] = fields.map(f => f.value.trim());
+        // взимам ги от обекта input
+        const name = input.name.value.trim();
+        const age = Number(input.age.value.trim());
+        const kind = input.kind.value.trim();
+        const owner = input.owner.value.trim();
 
-        if (fields.map(f => f.value.trim()).some(v => v == '') || Number.isNaN(Number(age))) {
+        if (name == '' || input.age.value.trim() == '' || Number.isNaN(age) || kind == '' || owner == '') {
             return;
         }
 
-        const contactBtn = e('button', {}, 'Contact with owner');
+       const contactBtn = e('button', {}, 'Contact with owner');
 
         const pet = e('li', {},
             e('p', {},
@@ -34,9 +46,15 @@ function solve() {
 
         petList.appendChild(pet);
 
+
+
+        // input.name.value = '';
+        // input.age.value = '';
+        // input.kind.value = '';
+        // input.owner.value = '';
+
         // document.querySelector(form).reset(); трябва референция за това
-        // Изчиствам всички полета
-        fields.forEach(f => f.value = '');
+        Array.from(fields).forEach(f => f.value = '');
 
         function contact() {
             const confirmInput = e('input', {
@@ -59,10 +77,8 @@ function solve() {
             return;
         }
 
-        const checkBtn = el('button', 'Checked');
+        const checkBtn = e('button', {}, 'Checked');
         checkBtn.addEventListener('click', check.bind(null, pet));
-
-        // pet.querySelector('div').replaceWith(checkBtn); // Не работи в джъдж
 
         pet.querySelector('div').remove();
         pet.appendChild(checkBtn);
@@ -74,10 +90,6 @@ function solve() {
 
     function check(pet) {
         pet.remove();
-    }
-
-    function el(type, ...content) {
-        return e(type, {}, ...content);
     }
 
     // function create elements създаване на елементи
@@ -97,4 +109,5 @@ function solve() {
         }
         return element;
     }
+
 }
