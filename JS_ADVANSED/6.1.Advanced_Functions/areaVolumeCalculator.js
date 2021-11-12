@@ -1,4 +1,4 @@
-/**
+
  * 
  * @param {function} area 
  * @param {function} vol 

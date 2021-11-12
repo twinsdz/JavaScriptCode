@@ -4,6 +4,7 @@ function solve(input) {
         [false, false, false],
         [false, false, false]
     ];
+    
     let player = 'X';
 
     for (let line of input) {
