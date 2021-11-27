@@ -1,51 +1,37 @@
 function solve() {
+
    document.querySelector('#btnSend').addEventListener('click', onClick);
 
-   function onClick () {
-      let restaurants = JSON.parse(document.querySelector('#inputs textarea').value);
-      let catalog = restaurants
-         .reduce((catalog, r) => reduceCatalog(catalog, r), {});
+   function onClick() {
+      let input = JSON.parse(document.querySelector('#inputs textarea').value);
+      let bestRestaurantOutput = document.querySelector('#bestRestaurant p');
+      let workersOutput = document.querySelector('#workers p');
 
-      let sortedCatalog = Object.keys(catalog)
-         .sort((key1, key2) => catalog[key2].avgPrice() - catalog[key1].avgPrice());
-      let bestRestaurant = catalog[sortedCatalog[0]];
-      let sortedSalary = Object.keys(bestRestaurant.employees)
-         .sort((key1, key2) => bestRestaurant.employees[key2] - bestRestaurant.employees[key1]);
-      
-      let restaurantInfo = `Name: ${sortedCatalog[0]} Average Salary: ${bestRestaurant.avgPrice()} Best Salary: ${bestRestaurant.employees[sortedSalary[0]].toFixed(2)}`
-      let workersInfo = ''
-      sortedSalary.forEach((key) => {
-         workersInfo += `Name: ${key} With Salary: ${bestRestaurant.employees[key]} `;
-      });
+      let list = {};
 
-      document.querySelectorAll('#outputs div p')[0].textContent = restaurantInfo;
-      document.querySelectorAll('#outputs div p')[1].textContent = workersInfo;
-
-      
-      function reduceCatalog(catalog, r) {
-         let [restaurantName, employees] = r.split(' - ');
-         employees = employees.split(', ');
-
-         let exists = catalog[restaurantName];
-         if (!exists) {
-               catalog[restaurantName] = { "employees": {}, avgPrice };
-         }
-
-         employees.forEach((e) => {  
-            let [eName, eSalary] = e.split(' ');
-            catalog[restaurantName]["employees"][eName] = Number(eSalary);
+      for (let line of input) {
+         let [restaurantName, workersData] = line.split(' - ');
+         let workerInput = workersData.split(', ').map(el => {
+            let [name, salary] = el.split(' ');
+            return {name, salary: Number(salary)};
          });
 
-         return catalog;
-             
-       }
+         if (!list[restaurantName]) {
+            list[restaurantName] = {
+               workers: [],
+               getAverageSalary: function () {
+                  return this.workers.reduce((a, b) => a + b.salary, 0) / this.workers.length;
+               }
+            };
+         }
 
-       function avgPrice() {
-         let salaries = Object.values(this.employees);
-         let totalSalaries = salaries.reduce((avg, s) => avg+= s);
-         let avgPrice = totalSalaries / salaries.length;
+            list[restaurantName].workers = list[restaurantName].workers.concat(workerInput);
+         }
 
-         return avgPrice.toFixed(2);
+         let bestAverageSalary = Object.entries(list).sort((a, b) => b[1].getAverageSalary() - a[1].getAverageSalary());
+         let bestSalary = Object.values(bestAverageSalary[0][1].workers).sort((a, b) => b.salary - a.salary);
+
+         bestRestaurantOutput.textContent = `Name: ${bestAverageSalary[0][0]} Average Salary: ${(bestAverageSalary[0][1].getAverageSalary().toFixed(2))} Best Salary: ${bestSalary[0].salary.toFixed(2)}`;
+         workersOutput.textContent = Object.values(bestSalary).map(el => `Name: ${el.name} With Salary: ${el.salary}`).join(' ');
       }
    }
-}

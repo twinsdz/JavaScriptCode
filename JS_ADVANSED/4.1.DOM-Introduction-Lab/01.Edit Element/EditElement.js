@@ -10,6 +10,8 @@
     el.textContent = text.split(match).join(replacer);
 } */
 
+// el е референция към елемента
+
 function editElement(el, match, replacer) {
     const text = el.textContent;
     const matcher = new RegExp(match, 'g');
