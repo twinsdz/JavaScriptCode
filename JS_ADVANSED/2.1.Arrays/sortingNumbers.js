@@ -28,18 +28,33 @@
 //     return arr;
 // }
 
+// function solve(input) {
+//     input.sort((a, b) => a - b);
+//     const arr = [];
+//     const count = Math.floor(input.length / 2);
+
+//     for(let i = 0; i < count; i++){
+//         arr.push(input[i]);
+//         arr.push(input[input.length - 1 - i]);
+//     }
+
+//     return arr;
+// }
+
 function solve(input) {
     input.sort((a, b) => a - b);
-    const arr = [];
-    const count = Math.floor(input.length / 2);
+    let arr = [];
 
-    for(let i = 0; i < count; i++){
-        arr.push(input[i]);
-        arr.push(input[input.length - 1 - i]);
+    while (input.length != 0) {
+        if (input.length == 1) {
+            arr.push(input.shift());
+        } else {
+            arr.push(input.shift(), input.pop());
+        }
     }
 
     return arr;
 }
 
-console.log(solve([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]));
+// console.log(solve([1, 65, 3, 52, 48, 63, 31, -3, 18, 56]));
 console.log(solve([1, 65, 3, 52, 48, 63, 31, -3, 18]));
