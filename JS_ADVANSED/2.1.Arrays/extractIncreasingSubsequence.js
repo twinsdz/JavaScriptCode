@@ -1,15 +1,28 @@
 function solve(input) {
     let biggest = Number.MIN_SAFE_INTEGER;
-    let arr = [];
-    for (let i = 0; i < input.length; i++) {
-
-        if (input[i] >= biggest) {
-            biggest = input[i];
-            arr.push(input[i]);
+    const arr = input.filter((el) => {
+        if (el >= biggest) {
+            biggest = el;
+            return true;   
         }
-    }
+        return false;
+});
     return arr;
 }
+
+
+// function solve(input) {
+//     let biggest = Number.MIN_SAFE_INTEGER;
+//     let arr = [];
+//     for (let i = 0; i < input.length; i++) {
+
+//         if (input[i] >= biggest) {
+//             biggest = input[i];
+//             arr.push(input[i]);
+//         }
+//     }
+//     return arr;
+// }
 
 // function solve(input) {
 //     let biggest = Number.MIN_SAFE_INTEGER;
