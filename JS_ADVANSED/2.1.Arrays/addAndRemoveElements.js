@@ -1,16 +1,33 @@
+// function solve(input) {
+//     let arr = [];
+//     let num = 1;
+
+//     for (let el of input) {
+//         if (el === 'add') {
+//             arr.push(num);
+//             num++;
+//         } else {
+//                 arr.pop();
+//                 num++;
+//         }
+//     }
+//     return arr.length > 0 ? arr.join('\n') : 'Empty';
+// }
+
+
 function solve(input) {
     let arr = [];
     let num = 1;
 
-    for (let el of input) {
-        if (el === 'add') {
-            arr.push(num);
-            num++;
-        } else {
-                arr.pop();
-                num++;
+    input.forEach((el) => {
+
+        if(el == "add"){
+            arr.push(num); 
+        } else{
+            arr.pop();
         }
-    }
+        num++;
+    });
     return arr.length > 0 ? arr.join('\n') : 'Empty';
 }
 
