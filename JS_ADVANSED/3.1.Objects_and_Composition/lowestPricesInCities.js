@@ -1,20 +1,43 @@
-function solve(input) {
+// function solve(input) {
+//     let obj = {};
+
+//     for (const line of input) {
+//         let [townName, productName, price] = line.split(' | ');
+//         price = Number(price);
+
+//         if (!obj.hasOwnProperty(productName)) {
+//             obj[productName] = {};
+//         }
+
+//         obj[productName][townName] = price;
+//     }
+
+//     for (let product in obj) {
+//         let sorted = Object.entries(obj[product]).sort((a, b) => a[1] - b[1]);
+//         console.log(`${product} -> ${sorted[0][1]} (${sorted[0][0]})`);
+//     }
+// }
+
+function solve(array) {
     let obj = {};
 
-    for (const line of input) {
-        let [townName, productName, price] = line.split(' | ');
+    array.forEach((element) => {
+        let [town, productName, price] = element.split(' | ');
         price = Number(price);
 
-        if (!obj.hasOwnProperty(productName)) {
+        if (!obj[productName]) {
             obj[productName] = {};
         }
 
-        obj[productName][townName] = price;
-    }
+        obj[productName][town] = price;
+
+    });
 
     for (let product in obj) {
         let sorted = Object.entries(obj[product]).sort((a, b) => a[1] - b[1]);
-        console.log(`${product} -> ${sorted[0][1]} (${sorted[0][0]})`);
+        let price = sorted[0][1];
+        let town = sorted[0][0];
+        console.log(`${product} -> ${price} (${town})`);
     }
 }
 

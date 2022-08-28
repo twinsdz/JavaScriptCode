@@ -1,18 +1,33 @@
+// function solve(array) {
+//     let result = [];
+
+//     for (let hero of array) {
+//         let [name, level, items] = hero.split(' / ');
+//         // level = Number(level);
+//         // items = items ? items.split(', ') : [];
+
+//         result.push({
+//             name,
+//             'level': Number(level),
+//             'items': items ? items.split(', ') : []
+//         });
+
+//     }
+//     return JSON.stringify(result);
+// }
+
 function solve(array) {
     let result = [];
 
-    for (let hero of array) {
-        let [name, level, items] = hero.split(' / ');
-        // level = Number(level);
-        // items = items ? items.split(', ') : [];
+   array.forEach((el) => {
+        let [name, level, items] = el.split(' / ');
 
         result.push({
             name,
             'level': Number(level),
             'items': items ? items.split(', ') : []
         });
-
-    }
+    });
     return JSON.stringify(result);
 }
 

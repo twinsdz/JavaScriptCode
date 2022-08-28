@@ -14,3 +14,10 @@ console.log(solve({
     levelOfHydrated: 0,
     dizziness: true
 }));
+
+console.log(solve({
+    weight: 95,
+    experience: 3,
+    levelOfHydrated: 0,
+    dizziness: false
+}));

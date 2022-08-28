@@ -4,7 +4,7 @@ function solve(obj) {
         'engine': getEngine(obj.power),
         'carriage': getCarriage(obj.carriage, obj.color),
         'wheels': getWheels(obj.wheelsize)
-    }
+    };
 
     function getEngine(power) {
         const engines = [{
@@ -41,7 +41,7 @@ function solve(obj) {
     }
 
     function getWheels(num) {
-        let wheelsize = Math.floor(num) % 2 === 0 ? Math.floor(num) -1 : Math.floor(num);
+        let wheelsize = Math.floor(num) % 2 === 0 ? Math.floor(num) - 1 : Math.floor(num);
         // return Array(4).fill(wheelsize, 0, 4);
         return [wheelsize, wheelsize, wheelsize, wheelsize];
     }

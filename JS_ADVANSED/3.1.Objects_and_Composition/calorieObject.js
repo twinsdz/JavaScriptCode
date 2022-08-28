@@ -3,6 +3,7 @@ function solve(input) {
 
     for (let i = 0; i < input.length; i += 2) {
         obj[input[i]] = Number(input[i + 1]);
+            // key                 value
 
     }
     console.log(obj);
